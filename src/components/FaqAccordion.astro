@@ -1,0 +1,58 @@
+---
+import Icon from "./Icon.astro";
+
+interface Item {
+  id: string;
+  question: string;
+  answer: string; // HTML string
+}
+
+interface Props {
+  items: Item[];
+}
+
+const { items } = Astro.props as Props;
+---
+
+<div class="space-y-3">
+  {
+    items.map((item) => (
+      <details
+        id={item.id}
+        class="group rounded-lg border border-theme-border bg-theme-surface p-4 hover:border-theme-primary transition-colors cursor-pointer"
+      >
+        <summary class="flex items-center justify-between font-semibold text-theme-text-primary list-none">
+          <span class="text-base lg:text-lg">{item.question}</span>
+          <Icon
+            name="chevron-right"
+            size="md"
+            class="text-theme-primary transition-transform duration-200 group-open:rotate-90 flex-shrink-0"
+          />
+        </summary>
+        <div class="mt-4 text-theme-text-secondary text-sm lg:text-base leading-relaxed space-y-3">
+          <div set:html={item.answer} />
+        </div>
+      </details>
+    ))
+  }
+</div>
+
+<style>
+  div :global(p) {
+    margin: 0;
+  }
+
+  div :global(ul) {
+    list-style-position: inside;
+    padding: 0;
+    margin: 0;
+  }
+
+  div :global(li) {
+    margin: 0.5rem 0;
+  }
+
+  div :global(li strong) {
+    color: var(--color-theme-text-primary);
+  }
+</style>

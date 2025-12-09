@@ -1,0 +1,61 @@
+---
+// src/layouts/Layout.astro
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/tailwind.css";
+import nav from "../data/navigation.json";
+
+const { title, description } = Astro.props as {
+	title?: string;
+	description?: string;
+};
+
+const defaultTitle = nav.brand.name;
+const defaultDescription =
+	"Professional Healthcare Services - Expert care delivered to your home";
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title ?? defaultTitle}</title>
+		{
+			description && (
+				<meta name="description" content={description ?? defaultDescription} />
+			)
+		}
+
+		<!-- Open Graph / Social Media -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title ?? defaultTitle} />
+		{
+			description && (
+				<meta
+					property="og:description"
+					content={description ?? defaultDescription}
+				/>
+			)
+		}
+
+		<!-- Theme Color -->
+		<meta name="theme-color" content="#0d9488" />
+
+		<!-- Favicon placeholder - replace with your own -->
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+	</head>
+	<body
+		class="bg-theme-surface-muted font-sans text-theme-text-primary antialiased selection:bg-theme-primary-lighter/50 selection:text-theme-primary-darker"
+	>
+		<Nav />
+		<main>
+			<!-- The page-specific content will be injected here -->
+			<slot />
+		</main>
+		<Footer />
+	</body>
+	<!-- Your scripts here -->
+</html>

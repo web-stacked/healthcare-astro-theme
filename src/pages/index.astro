@@ -1,0 +1,365 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import seniorCareImage from "../assets/hero-main.jpg";
+import professionalCareImage from "../assets/professional-care.jpg";
+import teamMemberImage from "../assets/team-member.jpg";
+import heroServicesImage from "../assets/hero-services.jpg";
+import ServicesIntroSection from "../components/ServicesIntroSection.astro";
+import FaqAccordion from "../components/FaqAccordion.astro";
+import faqs from "../data/faqs.json";
+import NumberCounter from "../components/NumberCounter.astro";
+import Button from "../components/Button.astro";
+import Icon from "../components/Icon.astro";
+import Link from "../components/Link.astro";
+import Heading from "../components/Heading.astro";
+
+interface ServiceCard {
+	title: string;
+	description: string;
+	link: string;
+}
+
+const serviceCards: ServiceCard[] = [
+	{
+		title: "Professional Care Services",
+		description:
+			"Expert care tailored to your needs in the comfort of your home",
+		link: "/services#care",
+	},
+	{
+		title: "Specialized Support",
+		description: "Specialized support for complex medical conditions",
+		link: "/services#specialty",
+	},
+	{
+		title: "24/7 Support",
+		description: "Round-the-clock care and support when you need it most",
+		link: "/services#support",
+	},
+];
+---
+
+<Layout
+	title="Professional Healthcare Services | MedCare Solutions"
+	description="Trusted healthcare services since 2010. Expert medical care and support delivered to your home by qualified professionals. 500+ monthly visits, 75+ healthcare professionals."
+>
+	<!-- Hero Section -->
+	<section
+		class="relative min-h-[85vh] flex items-center"
+		role="banner"
+		aria-label="Hero Section"
+	>
+		<div class="absolute inset-0 z-0">
+			<Image
+				src={seniorCareImage}
+				alt="Professional healthcare services"
+				class="w-full h-full object-cover"
+				loading="eager"
+				width={1920}
+				height={1080}
+			/>
+			<div class="absolute inset-0 bg-gradient-to-r from-black/60 to-black/35">
+			</div>
+		</div>
+
+		<div class="container relative z-10">
+			<div class="max-w-3xl text-white">
+				<h1
+					class="text-[clamp(2rem,4vw,3.5rem)] font-bold leading-[1.1] mb-6 tracking-tight animate-fade-in"
+				>
+					Professional Healthcare Solutions
+				</h1>
+				<p
+					class="text-[clamp(1rem,2vw,1.25rem)] mb-10 opacity-95 leading-relaxed font-light"
+				>
+					Comprehensive healthcare services delivering expert care and support
+					when you need it most
+				</p>
+				<div class="flex flex-wrap gap-4">
+					<Button
+						variant="white"
+						size="lg"
+						href="/contact"
+						class="hover:shadow-xl hover:scale-105"
+						ariaLabel="Get in touch with our care team"
+					>
+						Get Started
+					</Button>
+					<Button
+						variant="primary"
+						size="lg"
+						href="/careers"
+						class="ring-2 ring-white/20 hover:shadow-xl hover:scale-105"
+						ariaLabel="View nursing career opportunities"
+					>
+						Join Our Team
+					</Button>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Introduction Section -->
+	<section
+		class="section bg-gradient-to-b from-theme-surface-muted to-theme-surface"
+	>
+		<div class="container">
+			<div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
+				<div class="lg:w-1/2">
+					<div
+						class="relative rounded-3xl overflow-hidden shadow-2xl ring-1 ring-black/5 transform hover:scale-[1.02] transition-transform duration-300"
+					>
+						<Image
+							src={professionalCareImage}
+							alt="Professional healthcare provider"
+							class="w-full h-auto"
+							loading="lazy"
+						/>
+					</div>
+				</div>
+				<div class="lg:w-1/2">
+					<Heading level="h2" class="mb-6">
+						MedCare Solutions Professional Services
+					</Heading>
+					<p
+						class="text-theme-text-secondary text-base lg:text-lg leading-relaxed mb-8"
+					>
+						Since 2010, we've been delivering exceptional healthcare services,
+						combining medical expertise with compassionate care. Our team of
+						qualified professionals brings specialized care directly to your
+						doorstep, ensuring comfort and convenience without compromising on
+						quality.
+					</p>
+					<ul class="space-y-5">
+						{
+							serviceCards.map((service) => (
+								<li class="flex items-start group">
+									<div class="flex-shrink-0 w-7 h-7 rounded-full bg-theme-primary-lighter/20 flex items-center justify-center mr-4 mt-0.5 group-hover:bg-theme-primary transition-colors duration-300">
+										<Icon
+											name="check"
+											size="sm"
+											class="text-theme-primary group-hover:text-white transition-colors duration-300"
+										/>
+									</div>
+									<span class="text-theme-text-secondary text-lg">
+										{service.description}
+									</span>
+								</li>
+							))
+						}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Services Section -->
+	<section
+		class="section-sm bg-gradient-to-b from-theme-primary-lighter/10 via-theme-primary-lighter/5 to-theme-surface"
+	>
+		<ServicesIntroSection />
+	</section>
+
+	<!-- Statistics Section with Oval Design -->
+	<section class="section bg-theme-surface">
+		<div class="container">
+			<div class="text-center mb-16">
+				<h2 class="text-3xl lg:text-4xl font-bold text-theme-text-primary mb-4">
+					Over 15 Years of Excellence
+				</h2>
+				<p class="text-lg text-theme-text-secondary">
+					Trusted healthcare since 2010
+				</p>
+			</div>
+
+			<div
+				class="mx-auto flex flex-col lg:flex-row items-center gap-16 lg:gap-20"
+			>
+				<!-- Oval Image Container -->
+				<div class="lg:w-1/2">
+					<div class="relative">
+						<!-- Oval mask for the image -->
+						<div
+							class="aspect-[16/9] rounded-[50%] overflow-hidden shadow-2xl ring-1 ring-black/5"
+						>
+							<Image
+								src={teamMemberImage}
+								alt="Professional healthcare provider"
+								class="w-full h-full object-cover"
+								loading="lazy"
+							/>
+
+							<!-- Stats Overlay -->
+							<div
+								class="absolute inset-0 flex justify-between items-center px-4 stats-container"
+							>
+								<!-- Left Stat -->
+								<div
+									class="stats-circle w-32 h-32 md:w-44 md:h-44 bg-sky-600/95 rounded-full flex flex-col items-center justify-center text-white transform hover:scale-110 transition-all duration-300 shadow-2xl ring-4 ring-white/30"
+								>
+									<NumberCounter
+										number="500+"
+										class="text-2xl md:text-3xl font-bold"
+									/>
+									<span class="text-xs md:text-sm mt-1 font-medium"
+										>Monthly visits</span
+									>
+								</div>
+
+								<!-- Right Stat -->
+								<div
+									class="stats-circle w-32 h-32 md:w-44 md:h-44 bg-orange-500/95 rounded-full flex flex-col items-center justify-center text-white transform hover:scale-110 transition-all duration-300 shadow-2xl ring-4 ring-white/30"
+								>
+									<NumberCounter
+										number="75+"
+										class="text-2xl md:text-3xl font-bold"
+									/>
+									<span class="text-xs md:text-sm mt-1 font-medium"
+										>Professionals</span
+									>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Content -->
+				<div class="lg:w-1/2 space-y-6">
+					<div class="prose prose-lg max-w-none text-theme-text-secondary">
+						<p class="text-lg leading-relaxed">
+							<strong class="text-theme-text-primary">Founded in 2010,</strong> MedCare
+							Solutions has established itself as a trusted provider of comprehensive
+							healthcare services. Our commitment to excellence and patient-centered
+							care has made us a leader in the healthcare industry.
+						</p>
+						<p class="text-lg leading-relaxed">
+							Today, as a regional healthcare agency, we proudly serve
+							communities across the region with over 500 monthly visits and a
+							dedicated team of more than 75 skilled healthcare professionals
+							who bring compassionate care directly to patients' homes.
+						</p>
+					</div>
+					<div class="pt-6">
+						<Link href="/about"> Learn more about our journey </Link>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- FAQ Section -->
+	<section
+		class="section bg-gradient-to-b from-theme-surface-muted to-theme-surface"
+	>
+		<div class="container">
+			<div class="narrow mx-auto">
+				<div class="text-center mb-16">
+					<h2
+						class="text-3xl lg:text-4xl font-bold text-theme-text-primary mb-4"
+					>
+						Frequently Asked Questions
+					</h2>
+					<p class="text-lg text-theme-text-secondary">
+						Answers to coverage, scheduling, and what care at home looks like—at
+						a glance
+					</p>
+				</div>
+				<FaqAccordion items={faqs.slice(0, 4)} />
+				<div class="text-center mt-12">
+					<Link href="/info"> View all FAQs </Link>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- CTA Section -->
+	<section class="relative section">
+		<div class="absolute inset-0">
+			<Image
+				src={heroServicesImage}
+				alt="Professional healthcare environment"
+				class="w-full h-full object-cover"
+				loading="lazy"
+			/>
+			<div
+				class="absolute inset-0 bg-gradient-to-r from-theme-primary-darker/80 to-theme-primary-dark/75"
+			>
+			</div>
+		</div>
+		<div class="relative container">
+			<div class="narrow mx-auto text-center text-white">
+				<h2 class="text-3xl lg:text-4xl font-bold mb-6 leading-tight">
+					Experience Professional Care at Home
+				</h2>
+				<p
+					class="text-lg lg:text-xl mb-10 text-white/95 font-light leading-relaxed max-w-2xl mx-auto"
+				>
+					Take the first step toward exceptional healthcare services. Our
+					experienced team is ready to support you and your family with
+					personalized, professional care services.
+				</p>
+				<div class="flex flex-col sm:flex-row flex-wrap justify-center gap-4">
+					<Button
+						variant="white"
+						href="/contact"
+						class="hover:shadow-2xl hover:scale-105"
+						ariaLabel="Contact our care team"
+						showIcon={true}
+					>
+						Get Started Today
+					</Button>
+					<Button
+						variant="white-outline"
+						href="/services"
+						class="hover:shadow-2xl"
+						ariaLabel="Learn about our services"
+					>
+						Explore Our Services
+					</Button>
+				</div>
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	.stats-circle {
+		opacity: 0;
+		animation: fadeInScale 0.8s ease-out forwards;
+		animation-play-state: paused;
+	}
+
+	@keyframes fadeInScale {
+		from {
+			opacity: 0;
+			transform: scale(0.8);
+		}
+		to {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+</style>
+
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						const circles = document.querySelectorAll(".stats-circle");
+						circles.forEach((circle) => {
+							(circle as HTMLElement).style.animationPlayState = "running";
+						});
+						observer.unobserve(entry.target);
+					}
+				});
+			},
+			{ threshold: 0.2 },
+		);
+
+		const section = document.querySelector(".stats-container");
+		if (section) observer.observe(section);
+	});
+</script>

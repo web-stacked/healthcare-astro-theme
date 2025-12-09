@@ -1,0 +1,54 @@
+---
+import infusionImage from "../assets/professional-staff.jpg";
+import patientCareImage from "../assets/about-main.jpg";
+import staffImage from "../assets/team-professionals.jpg";
+import Card from "./Card.astro";
+
+const services = [
+  {
+    title: "Professional Healthcare Services",
+    summary:
+      "Enhancing patient recovery with quality healthcare services in the comfort of their home, MedCare Solutions offers expert care tailored to a diverse spectrum of needs in a familiar environment.",
+    image: infusionImage,
+    link: "/services#professional-healthcare-services",
+  },
+  {
+    title: "Our Patient Care",
+    summary:
+      "With a commitment to dedication and service, our agency provides comprehensive care management, including patient intake, treatment verification, and ongoing progress reports.",
+    image: patientCareImage,
+    link: "/services#our-patient-care",
+  },
+  {
+    title: "Our Staff",
+    summary:
+      "Depend on our family of licensed professional nurses, skilled across multiple states, to deliver optimal medical treatment. We prioritize continuous professional growth for the highest standard of patient care.",
+    image: staffImage,
+    link: "/services#our-staff",
+  },
+];
+---
+
+<div class="container">
+  <div class="text-center mb-10 lg:mb-12">
+    <h2 class="text-3xl lg:text-4xl font-bold text-theme-text-primary mb-4">
+      Homecare Speciality Infusion Services
+    </h2>
+    <p class="text-lg text-theme-text-secondary">
+      Comprehensive care solutions tailored to your needs
+    </p>
+  </div>
+
+  <div class="flex flex-wrap justify-center gap-6">
+    {
+      services.map((service) => (
+        <Card
+          title={service.title}
+          summary={service.summary}
+          image={service.image}
+          link={service.link}
+        />
+      ))
+    }
+  </div>
+</div>

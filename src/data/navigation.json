@@ -1,0 +1,37 @@
+{
+  "brand": {
+    "name": "MedCare Solutions",
+    "logo": "MedCare Solutions"
+  },
+  "links": [
+    {
+      "label": "Home",
+      "href": "/",
+      "icon": "home"
+    },
+    {
+      "label": "About Us",
+      "href": "/about",
+      "icon": "info"
+    },
+    {
+      "label": "Services",
+      "href": "/services",
+      "icon": "clipboard"
+    },
+    {
+      "label": "Careers",
+      "href": "/careers",
+      "icon": "users"
+    },
+    {
+      "label": "Info",
+      "href": "/info",
+      "icon": "book"
+    }
+  ],
+  "cta": {
+    "label": "Contact Us",
+    "href": "/contact"
+  }
+}

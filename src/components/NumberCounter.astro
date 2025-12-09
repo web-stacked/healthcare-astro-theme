@@ -1,0 +1,82 @@
+---
+interface Props {
+  number: string; // Example: "850+"
+  class?: string;
+}
+
+const { number, class: className = "" } = Astro.props;
+
+// Extract the numeric part and any suffix (like '+' or '%')
+const numericPart = parseFloat(number.replace(/[^0-9.-]/g, ""));
+const suffix = number.replace(/[0-9.-]/g, "");
+---
+
+<div class={className}>
+  <span class="number-counter" data-target={numericPart} data-suffix={suffix}>
+    0{suffix}
+  </span>
+</div>
+
+<style>
+  .number-counter {
+    display: inline-block;
+    font-variant-numeric: tabular-nums;
+    min-width: 1ch;
+  }
+</style>
+
+<script>
+  function animateNumbers() {
+    const counters = document.querySelectorAll(".number-counter");
+
+    counters.forEach((counter) => {
+      const target = parseFloat(counter.getAttribute("data-target") || "0");
+      const suffix = counter.getAttribute("data-suffix") || "";
+      const duration = 2000; // Animation duration in milliseconds
+      let startTime: number | null = null;
+      let lastValue = -1;
+
+      const updateCounter = (timestamp: number) => {
+        if (!startTime) startTime = timestamp;
+        const progress = Math.min((timestamp - startTime) / duration, 1);
+
+        // Use easeOutQuad for smooth animation
+        const easeProgress = 1 - Math.pow(1 - progress, 3);
+        const current = Math.floor(easeProgress * target);
+
+        // Only update if the value has changed to reduce flickering
+        if (current !== lastValue) {
+          counter.textContent = current.toString() + suffix;
+          lastValue = current;
+        }
+
+        if (progress < 1) {
+          requestAnimationFrame(updateCounter);
+        } else {
+          counter.textContent = target.toString() + suffix;
+        }
+      };
+
+      // Start animation when element is in view
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              requestAnimationFrame(updateCounter);
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.5 },
+      );
+
+      observer.observe(counter);
+    });
+  }
+
+  // Run animation when the page loads
+  document.addEventListener("DOMContentLoaded", animateNumbers);
+
+  // Re-run animation when new content is loaded (for SPAs)
+  document.addEventListener("astro:page-load", animateNumbers);
+</script>

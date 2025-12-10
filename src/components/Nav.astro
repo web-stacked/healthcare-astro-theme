@@ -49,31 +49,13 @@ import nav from "../data/navigation.json";
         </nav>
 
         <!-- Mobile Menu Button -->
-        <div class="lg:hidden">
-          <MenuIcon class="w-6 h-6 text-theme-text-secondary">
-            <button
-              class="p-2 -mr-2 rounded-lg hover:bg-theme-surface-hover transition-colors"
-              aria-label="Toggle menu"
-            >
-              <svg
-                class="w-6 h-6 text-theme-text-secondary"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 6h16M4 12h16M4 18h16"></path>
-              </svg>
-            </button>
-          </MenuIcon>
+        <div class="lg:hidden flex items-center">
+          <MenuIcon class="w-6 h-6 text-theme-text-secondary" />
         </div>
       </div>
 
       <!-- Mobile Navigation Menu -->
-      <MenuItems class="lg:hidden mobile-menu">
+      <MenuItems class="hidden lg:hidden mobile-menu">
         <nav class="bg-white border-t border-theme-border shadow-lg">
           <div class="max-w-md mx-auto px-4 py-6">
             <ul class="space-y-1 mb-6">
@@ -138,6 +120,18 @@ import nav from "../data/navigation.json";
   .nav-link[aria-current="page"],
   .mobile-nav-link[aria-current="page"] {
     color: var(--color-theme-primary);
+    background-color: var(--color-theme-surface-hover);
+  }
+
+  /* Mobile menu button styling */
+  #astronav-menu {
+    padding: 0.5rem;
+    margin-right: -0.5rem;
+    border-radius: 0.5rem;
+    transition: background-color 150ms ease;
+  }
+
+  #astronav-menu:hover {
     background-color: var(--color-theme-surface-hover);
   }
 </style>

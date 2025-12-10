@@ -474,6 +474,10 @@
 	animation: fade-in 1s ease-out forwards;
 }
 
+/* Astro Navbar - Mobile Menu Styles */
+/* Menu is hidden by default via 'hidden' class on MenuItems component */
+/* The astronav-toggle class is used by astro-navbar to toggle visibility */
+
 /* Print Styles */
 @media print {
 	header,

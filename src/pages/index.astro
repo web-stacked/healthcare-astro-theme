@@ -56,6 +56,7 @@ const serviceCards: ServiceCard[] = [
 				alt="Professional healthcare services"
 				class="w-full h-full object-cover object-top"
 				loading="eager"
+				fetchpriority="high"
 				width={1920}
 				height={1080}
 			/>
@@ -82,7 +83,6 @@ const serviceCards: ServiceCard[] = [
 						size="lg"
 						href="/contact"
 						class="hover:shadow-xl hover:scale-105"
-						ariaLabel="Get in touch with our care team"
 					>
 						Get Started
 					</Button>
@@ -91,7 +91,6 @@ const serviceCards: ServiceCard[] = [
 						size="lg"
 						href="/careers"
 						class="ring-2 ring-white/20 hover:shadow-xl hover:scale-105"
-						ariaLabel="View nursing career opportunities"
 					>
 						Join Our Team
 					</Button>
@@ -304,7 +303,6 @@ const serviceCards: ServiceCard[] = [
 						variant="white"
 						href="/contact"
 						class="hover:shadow-2xl hover:scale-105"
-						ariaLabel="Contact our care team"
 						showIcon={true}
 					>
 						Get Started Today
@@ -313,7 +311,6 @@ const serviceCards: ServiceCard[] = [
 						variant="white-outline"
 						href="/services"
 						class="hover:shadow-2xl"
-						ariaLabel="Learn about our services"
 					>
 						Explore Our Services
 					</Button>
@@ -343,23 +340,35 @@ const serviceCards: ServiceCard[] = [
 </style>
 
 <script>
-	document.addEventListener("DOMContentLoaded", () => {
-		const observer = new IntersectionObserver(
-			(entries) => {
-				entries.forEach((entry) => {
-					if (entry.isIntersecting) {
-						const circles = document.querySelectorAll(".stats-circle");
-						circles.forEach((circle) => {
-							(circle as HTMLElement).style.animationPlayState = "running";
-						});
-						observer.unobserve(entry.target);
-					}
-				});
-			},
-			{ threshold: 0.2 },
-		);
+	// Single IntersectionObserver for stats animation (memory efficient)
+	const statsObserver = new IntersectionObserver(
+		(entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					const circles = entry.target.querySelectorAll(".stats-circle");
+					circles.forEach((circle) => {
+						(circle as HTMLElement).style.animationPlayState = "running";
+					});
+					statsObserver.unobserve(entry.target);
+				}
+			});
+		},
+		{ threshold: 0.2 }
+	);
 
+	function initStatsAnimation() {
 		const section = document.querySelector(".stats-container");
-		if (section) observer.observe(section);
-	});
+		if (section) {
+			// Reset animation state for view transitions
+			const circles = section.querySelectorAll(".stats-circle");
+			circles.forEach((circle) => {
+				(circle as HTMLElement).style.animationPlayState = "paused";
+			});
+			statsObserver.observe(section);
+		}
+	}
+
+	// Run on initial load and after view transitions
+	initStatsAnimation();
+	document.addEventListener("astro:page-load", initStatsAnimation);
 </script>

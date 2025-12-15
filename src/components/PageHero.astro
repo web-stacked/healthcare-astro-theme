@@ -6,9 +6,11 @@ interface Props {
   title: string;
   description: string;
   image: ImageMetadata;
+  /** Set to true for above-the-fold hero images to optimize LCP */
+  priority?: boolean;
 }
 
-const { title, description, image } = Astro.props;
+const { title, description, image, priority = true } = Astro.props;
 ---
 
 <section class="w-full bg-theme-surface-muted section">
@@ -31,6 +33,8 @@ const { title, description, image } = Astro.props;
             src={image}
             alt={title}
             class="w-full h-[350px] lg:h-[450px] object-cover rounded-2xl"
+            loading={priority ? "eager" : "lazy"}
+            fetchpriority={priority ? "high" : "auto"}
           />
         </div>
       </div>

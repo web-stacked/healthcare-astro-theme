@@ -16,7 +16,10 @@
     "medical-website",
     "healthcare-template"
   ],
-  "author": "web-stacked",
+  "author": {
+    "name": "TechStacked",
+    "url": "https://techstacked.dev"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",

@@ -13,4 +13,9 @@ export type IconName =
   | "heart"
   | "medical"
   | "home"
-  | "info";
+  | "info"
+  | "email"
+  | "location"
+  | "facebook"
+  | "twitter"
+  | "linkedin";

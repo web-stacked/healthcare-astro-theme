@@ -397,6 +397,12 @@ Future enhancements planned:
 
 ---
 
+## 👤 Author
+
+**TechStacked** - [techstacked.dev](https://techstacked.dev)
+
+---
+
 Made with ❤️ for the healthcare community
 
 **Star this repo if you find it useful! ⭐**

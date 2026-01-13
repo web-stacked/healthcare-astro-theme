@@ -12,7 +12,6 @@ import NumberCounter from "../components/NumberCounter.astro";
 import Button from "../components/Button.astro";
 import Icon from "../components/Icon.astro";
 import Link from "../components/Link.astro";
-import Heading from "../components/Heading.astro";
 
 interface ServiceCard {
 	title: string;
@@ -41,12 +40,12 @@ const serviceCards: ServiceCard[] = [
 ---
 
 <Layout
-	title="Professional Healthcare Services | MedCare Solutions"
-	description="Trusted healthcare services since 2010. Expert medical care and support delivered to your home by qualified professionals. 500+ monthly visits, 75+ healthcare professionals."
+	title="Healthcare at Home | MedCare Solutions"
+	description="Quality medical care delivered to your home by licensed professionals. Trusted by families since 2010."
 >
 	<!-- Hero Section -->
 	<section
-		class="relative min-h-screen lg:min-h-[50vh] flex items-center"
+		class="relative min-h-[70vh] md:min-h-screen lg:min-h-[50vh] flex items-center py-16 md:py-0"
 		role="banner"
 		aria-label="Hero Section"
 	>
@@ -65,19 +64,19 @@ const serviceCards: ServiceCard[] = [
 		</div>
 
 		<div class="container relative z-10">
-			<div class="max-w-3xl text-white">
+			<div class="max-w-3xl text-white text-center md:text-left mx-auto md:mx-0">
 				<h1
-					class="text-[clamp(2rem,4vw,3.5rem)] font-bold leading-[1.1] mb-6 tracking-tight animate-fade-in"
+					class="text-4xl md:text-[clamp(2rem,4vw,3.5rem)] font-bold leading-[1.1] mb-4 md:mb-6 tracking-tight animate-fade-in"
 				>
-					Professional Healthcare Solutions
+					Healthcare at Home
 				</h1>
 				<p
-					class="text-[clamp(1rem,2vw,1.25rem)] mb-10 opacity-95 leading-relaxed font-light"
+					class="text-lg md:text-[clamp(1rem,2vw,1.25rem)] mb-6 md:mb-10 opacity-95 leading-relaxed font-light max-w-md mx-auto md:mx-0 md:max-w-none"
 				>
-					Comprehensive healthcare services delivering expert care and support
-					when you need it most
+					Licensed professionals bringing expert medical care<br class="hidden md:inline" />
+					directly to your home.
 				</p>
-				<div class="flex flex-wrap gap-4">
+				<div class="flex flex-wrap gap-3 md:gap-4 justify-center md:justify-start">
 					<Button
 						variant="white"
 						size="lg"
@@ -99,38 +98,21 @@ const serviceCards: ServiceCard[] = [
 		</div>
 	</section>
 
-	<!-- Introduction Section -->
-	<section
-		class="section bg-gradient-to-b from-theme-surface-muted to-theme-surface"
-	>
+	<!-- About Section - Asymmetric editorial layout -->
+	<section class="section bg-theme-surface">
 		<div class="container">
-			<div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
-				<div class="lg:w-1/2">
-					<div
-						class="relative rounded-3xl overflow-hidden shadow-2xl ring-1 ring-black/5 transform hover:scale-[1.02] transition-transform duration-300"
-					>
-						<Image
-							src={professionalCareImage}
-							alt="Professional healthcare provider"
-							class="w-full h-auto"
-							loading="lazy"
-						/>
-					</div>
-				</div>
-				<div class="lg:w-1/2">
-					<Heading level="h2" class="mb-6">
-						MedCare Solutions Professional Services
-					</Heading>
-					<p
-						class="text-theme-text-secondary text-base lg:text-lg leading-relaxed mb-8"
-					>
-						Since 2010, we've been delivering exceptional healthcare services,
-						combining medical expertise with compassionate care. Our team of
-						qualified professionals brings specialized care directly to your
-						doorstep, ensuring comfort and convenience without compromising on
-						quality.
+			<div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+				<div class="order-2 lg:order-1">
+					<p class="text-sm font-medium tracking-widest uppercase text-theme-primary mb-4">
+						About Us
 					</p>
-					<ul class="space-y-5">
+					<h2 class="mb-6">
+						Bringing care to where you are
+					</h2>
+					<p class="text-theme-text-secondary text-lg leading-relaxed mb-6">
+						We specialize in delivering comprehensive medical care directly to your home. No waiting rooms, no travel stress—just quality healthcare in your comfort zone.
+					</p>
+					<ul class="space-y-5 mb-6">
 						{
 							serviceCards.map((service) => (
 								<li class="flex items-start group">
@@ -148,20 +130,35 @@ const serviceCards: ServiceCard[] = [
 							))
 						}
 					</ul>
+					<div class="text-center md:text-left">
+						<Link href="/about">Learn more about us</Link>
+					</div>
+				</div>
+				<div class="order-1 lg:order-2">
+					<div class="relative">
+						<div class="rounded-2xl overflow-hidden shadow-xl">
+							<Image
+								src={professionalCareImage}
+								alt="Healthcare provider with patient"
+								class="w-full h-auto"
+								loading="lazy"
+							/>
+						</div>
+						<!-- Decorative accent -->
+						<div class="absolute -bottom-4 -left-4 w-24 h-24 bg-theme-primary-lighter/30 rounded-2xl -z-10"></div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
 	<!-- Services Section -->
-	<section
-		class="section-sm bg-gradient-to-b from-theme-primary-lighter/10 via-theme-primary-lighter/5 to-theme-surface"
-	>
+	<section class="section bg-gradient-to-b from-theme-primary-lighter/10 via-theme-primary-lighter/5 to-theme-surface">
 		<ServicesIntroSection />
 	</section>
 
 	<!-- Statistics Section with Oval Design -->
-	<section class="section bg-theme-surface">
+	<section class="bg-theme-surface pt-4 pb-12 md:pt-8 md:pb-16">
 		<div class="container">
 			<div class="text-center mb-16">
 				<h2 class="text-3xl lg:text-4xl font-bold text-theme-text-primary mb-4">
@@ -172,16 +169,12 @@ const serviceCards: ServiceCard[] = [
 				</p>
 			</div>
 
-			<div
-				class="mx-auto flex flex-col lg:flex-row items-center gap-16 lg:gap-20"
-			>
+			<div class="mx-auto flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
 				<!-- Oval Image Container -->
 				<div class="lg:w-1/2">
 					<div class="relative">
 						<!-- Oval mask for the image -->
-						<div
-							class="aspect-[16/9] rounded-[50%] overflow-hidden shadow-2xl ring-1 ring-black/5"
-						>
+						<div class="aspect-[16/9] rounded-[50%] overflow-hidden shadow-2xl ring-1 ring-black/5">
 							<Image
 								src={teamMemberImage}
 								alt="Professional healthcare provider"
@@ -190,33 +183,27 @@ const serviceCards: ServiceCard[] = [
 							/>
 
 							<!-- Stats Overlay -->
-							<div
-								class="absolute inset-0 flex justify-between items-center px-4 stats-container"
-							>
+							<div class="absolute inset-0 flex justify-between items-center px-4 stats-container">
 								<!-- Left Stat -->
-								<div
-									class="stats-circle w-32 h-32 md:w-44 md:h-44 bg-sky-600/95 rounded-full flex flex-col items-center justify-center text-white transform hover:scale-110 transition-all duration-300 shadow-2xl ring-4 ring-white/30"
-								>
+								<div class="stats-circle w-28 h-28 md:w-36 md:h-36 bg-sky-600/95 rounded-full flex flex-col items-center justify-center text-white transform hover:scale-110 transition-all duration-300 shadow-2xl ring-4 ring-white/30">
 									<NumberCounter
 										number="500+"
-										class="text-2xl md:text-3xl font-bold"
+										class="text-xl md:text-2xl font-bold"
 									/>
-									<span class="text-xs md:text-sm mt-1 font-medium"
-										>Monthly visits</span
-									>
+									<span class="text-xs mt-1 font-medium">
+										Monthly visits
+									</span>
 								</div>
 
 								<!-- Right Stat -->
-								<div
-									class="stats-circle w-32 h-32 md:w-44 md:h-44 bg-orange-500/95 rounded-full flex flex-col items-center justify-center text-white transform hover:scale-110 transition-all duration-300 shadow-2xl ring-4 ring-white/30"
-								>
+								<div class="stats-circle w-28 h-28 md:w-36 md:h-36 bg-orange-500/95 rounded-full flex flex-col items-center justify-center text-white transform hover:scale-110 transition-all duration-300 shadow-2xl ring-4 ring-white/30">
 									<NumberCounter
 										number="75+"
-										class="text-2xl md:text-3xl font-bold"
+										class="text-xl md:text-2xl font-bold"
 									/>
-									<span class="text-xs md:text-sm mt-1 font-medium"
-										>Professionals</span
-									>
+									<span class="text-xs mt-1 font-medium">
+										Professionals
+									</span>
 								</div>
 							</div>
 						</div>
@@ -233,14 +220,14 @@ const serviceCards: ServiceCard[] = [
 							care has made us a leader in the healthcare industry.
 						</p>
 						<p class="text-lg leading-relaxed">
-							Today, as a regional healthcare agency, we proudly serve
-							communities across the region with over 500 monthly visits and a
-							dedicated team of more than 75 skilled healthcare professionals
-							who bring compassionate care directly to patients' homes.
+							Today, as a regional healthcare agency, we proudly serve communities across
+							the region with over 500 monthly visits and a dedicated team of more than
+							75 skilled healthcare professionals who bring compassionate care directly
+							to patients' homes.
 						</p>
 					</div>
 					<div class="pt-6">
-						<Link href="/about"> Learn more about our journey </Link>
+						<Link href="/about">Learn more about our journey</Link>
 					</div>
 				</div>
 			</div>
@@ -248,73 +235,43 @@ const serviceCards: ServiceCard[] = [
 	</section>
 
 	<!-- FAQ Section -->
-	<section
-		class="section bg-gradient-to-b from-theme-surface-muted to-theme-surface"
-	>
+	<section class="section bg-gradient-to-b from-theme-surface-muted to-theme-surface">
 		<div class="container">
 			<div class="narrow mx-auto">
-				<div class="text-center mb-16">
-					<h2
-						class="text-3xl lg:text-4xl font-bold text-theme-text-primary mb-4"
-					>
-						Frequently Asked Questions
-					</h2>
-					<p class="text-lg text-theme-text-secondary">
-						Answers to coverage, scheduling, and what care at home looks like—at
-						a glance
+				<div class="text-center mb-12">
+					<p class="text-sm font-medium tracking-widest uppercase text-theme-primary mb-4">
+						FAQ
 					</p>
+					<h2>Common Questions</h2>
 				</div>
 				<FaqAccordion items={faqs.slice(0, 4)} />
-				<div class="text-center mt-12">
-					<Link href="/info"> View all FAQs </Link>
+				<div class="text-center mt-10">
+					<Link href="/info">View all FAQs</Link>
 				</div>
 			</div>
 		</div>
 	</section>
 
 	<!-- CTA Section -->
-	<section class="relative section">
+	<section class="relative py-20 lg:py-28 overflow-hidden">
 		<div class="absolute inset-0">
 			<Image
 				src={heroServicesImage}
-				alt="Professional healthcare environment"
+				alt="Healthcare environment"
 				class="w-full h-full object-cover"
 				loading="lazy"
 			/>
-			<div
-				class="absolute inset-0 bg-gradient-to-r from-theme-primary-darker/80 to-theme-primary-dark/75"
-			>
-			</div>
+			<div class="absolute inset-0 bg-theme-primary-darker/90"></div>
 		</div>
 		<div class="relative container">
-			<div class="narrow mx-auto text-center text-white">
-				<h2 class="text-3xl lg:text-4xl font-bold mb-6 leading-tight">
-					Experience Professional Care at Home
-				</h2>
-				<p
-					class="text-lg lg:text-xl mb-10 text-white/95 font-light leading-relaxed max-w-2xl mx-auto"
-				>
-					Take the first step toward exceptional healthcare services. Our
-					experienced team is ready to support you and your family with
-					personalized, professional care services.
+			<div class="max-w-2xl mx-auto text-center text-white">
+				<h2 class="mb-6">Ready to get started?</h2>
+				<p class="text-lg mb-10 text-white/80 font-primary">
+					Contact us to discuss how we can support your healthcare needs at home.
 				</p>
-				<div class="flex flex-col sm:flex-row flex-wrap justify-center gap-4">
-					<Button
-						variant="white"
-						href="/contact"
-						class="hover:shadow-2xl hover:scale-105"
-						showIcon={true}
-					>
-						Get Started Today
-					</Button>
-					<Button
-						variant="white-outline"
-						href="/services"
-						class="hover:shadow-2xl"
-					>
-						Explore Our Services
-					</Button>
-				</div>
+				<Button variant="white" href="/contact">
+					Contact Us
+				</Button>
 			</div>
 		</div>
 	</section>

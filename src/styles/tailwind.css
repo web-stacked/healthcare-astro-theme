@@ -22,6 +22,8 @@
 @theme {
 	/* Typography - Fonts */
 	--font-primary: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+	/* Kept for backward-compat with existing classes (points to primary) */
+	--font-display: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 
 	/* Breakpoints */
 	--breakpoint-xs: 475px;
@@ -83,9 +85,9 @@
 	--button-padding-y-lg: 1rem; /* 16px / py-4 */
 
 	/* Card Design Tokens */
-	--card-radius: 0.75rem; /* 12px / rounded-xl */
-	--card-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-	--card-shadow-hover: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+	--card-radius: 1rem;
+	--card-shadow: 0 2px 8px -2px rgb(26 26 26 / 0.08);
+	--card-shadow-hover: 0 8px 24px -8px rgb(26 26 26 / 0.12);
 	--card-border-width: 1px;
 
 	/* Typography Scale */
@@ -188,6 +190,10 @@
 	font-family: theme(--font-primary);
 }
 
+@utility font-display {
+	font-family: theme(--font-display);
+}
+
 /* Button Utilities */
 .button {
 	@apply inline-flex items-center justify-center font-semibold text-center transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2;
@@ -271,12 +277,11 @@
 
 /* Navigation Utilities */
 .nav-link {
-	@apply px-3 py-2 rounded-full text-sm font-medium transition-colors;
+	@apply px-4 py-2 rounded-lg text-sm font-medium transition-colors;
 	color: theme(--color-theme-text-secondary);
 
 	&:hover {
-		color: theme(--color-theme-text-primary);
-		background-color: theme(--color-theme-surface-hover);
+		color: theme(--color-theme-primary);
 	}
 }
 

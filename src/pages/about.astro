@@ -230,6 +230,6 @@ import Icon from "../components/Icon.astro";
     });
   }
 
-  // Astro 5+ best practice: use astro:page-load for View Transitions
+  // Astro best practice with ClientRouter: re-run on astro:page-load
   document.addEventListener("astro:page-load", initToggleButtons);
 </script>

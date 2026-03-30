@@ -42,7 +42,10 @@ const faqLd = {
     </div>
   </section>
 
-  <script type="application/ld+json">{JSON.stringify(faqLd)}</script>
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(faqLd)}></script>
 
   <CallToActionSection
     heading="Still Have Questions?"

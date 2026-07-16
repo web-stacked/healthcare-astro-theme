@@ -37,8 +37,7 @@ Feature suggestions are welcome! Please open an issue with:
 3. **Make your changes** following the project's code style
 4. **Test your changes**:
    ```bash
-   npm run dev
-   npm run build
+   npm test
    ```
 5. **Commit your changes** with clear messages:
    ```bash
@@ -57,8 +56,8 @@ Feature suggestions are welcome! Please open an issue with:
 git clone https://github.com/web-stacked/healthcare-astro-theme.git
 cd healthcare-astro-theme
 
-# Install dependencies
-npm install
+# Install the exact locked dependencies
+npm ci
 
 # Start development server
 npm run dev
@@ -160,8 +159,8 @@ const { title, description, variant = 'primary' } = Astro.props;
 ## Testing
 
 Before submitting a PR:
+- [ ] Run all automated checks (`npm test`)
 - [ ] Test in development mode (`npm run dev`)
-- [ ] Verify production build (`npm run build`)
 - [ ] Test on multiple screen sizes
 - [ ] Check accessibility (keyboard navigation, screen readers)
 - [ ] Verify no console errors

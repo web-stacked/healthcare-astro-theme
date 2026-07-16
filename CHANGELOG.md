@@ -53,6 +53,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Upgraded the theme to Astro 7
+- Refreshed project metadata and contributor tooling for open-source distribution
+- Standardized demo branding and centralized contact details
+- Improved contact-form and map accessibility
+- Replaced dead placeholder links and the remote careers image
+
 ### Planned
 - Additional icon types
 - More component variants

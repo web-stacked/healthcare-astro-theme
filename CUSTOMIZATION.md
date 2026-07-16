@@ -14,7 +14,7 @@ This guide will help you customize the Healthcare Astro Theme to match your bran
 ### 1. Update Branding
 
 **Logo:**
-Replace `/src/assets/logo.png` with your own logo file.
+Replace `/src/assets/logo.png` with your own logo file. Update the demo brand and contact details in `/src/data/navigation.json`.
 
 **Favicon:**
 Replace `/public/favicon.svg` with your own favicon.

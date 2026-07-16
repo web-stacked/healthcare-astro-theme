@@ -3,12 +3,12 @@
 A free, open-source Astro theme for healthcare and medical service websites. It includes a clean multi-page layout, reusable UI components, Tailwind CSS v4 styling, and a simple structure that is easy to customize for clinics, home care agencies, private practices, and related service businesses.
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Astro](https://img.shields.io/badge/Astro-6.1%2B-FF5D01?logo=astro)
+![Astro](https://img.shields.io/badge/Astro-7%2B-FF5D01?logo=astro)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-v4-38B2AC?logo=tailwind-css)
 
 ## Overview
 
-- Built with Astro 6, Tailwind CSS v4, and TypeScript
+- Built with Astro 7, Tailwind CSS v4, and TypeScript
 - Includes 7 ready-to-use pages
 - Uses reusable components for heroes, cards, CTAs, icons, and FAQ sections
 - Designed to be easy to adapt for real client work or personal portfolio projects
@@ -84,8 +84,12 @@ If you are adapting this theme for a real site, these are the highest-impact cha
 1. Replace the demo brand content in `src/data/navigation.json`
 2. Update page text in `src/pages/`
 3. Swap the bundled images in `src/assets/`
-4. Edit contact and footer details in `src/components/Footer.astro`
+4. Edit brand and contact details in `src/data/navigation.json`
 5. Adjust colors and spacing tokens in `src/styles/tailwind.css`
+
+Theme switcher preview for the token-driven design system:
+
+![Healthcare theme switcher demo](./README-assets/demo-images/healthcare-theme-switcher.gif)
 
 ## Available Scripts
 
@@ -105,11 +109,13 @@ Common edits you will likely make first:
 1. Update the branding and navigation in `src/data/navigation.json`
 2. Replace the images in `src/assets/`
 3. Edit the page copy in `src/pages/`
-4. Update the footer content in `src/components/Footer.astro`
+4. Update brand and contact details in `src/data/navigation.json`
 5. Adjust colors, spacing, and design tokens in `src/styles/tailwind.css`
 6. Replace `public/favicon.svg` and `src/assets/logo.png`
 
 The theme is intentionally simple to edit without needing a CMS, adapter, or backend setup.
+
+The included contact form is a front-end demo. Connect it to your preferred form provider before deploying a production site. You should also confirm that every bundled image is suitable for your intended use or replace the images with your own licensed assets.
 
 ## Project Structure
 
@@ -155,7 +161,7 @@ This theme is static by default and can be deployed to platforms such as:
 
 ## Submission Notes
 
-This project is currently upgraded to Astro 6 and validated with:
+This project is currently upgraded to Astro 7 and validated with:
 
 - `npm run check`
 - `npm run build`

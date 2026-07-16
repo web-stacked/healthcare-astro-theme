@@ -5,16 +5,18 @@ import PageHero from "../components/PageHero.astro";
 import CallToActionSection from "../components/CallToActionSection.astro";
 import Icon from "../components/Icon.astro";
 import CheckListItem from "../components/CheckListItem.astro";
+import professionalStaffImage from "../assets/professional-staff.jpg";
+import { Image } from "astro:assets";
 
 ---
 
 <Layout
-  title="Career Opportunities - Join Our Team | Viva Care"
-  description="Join Viva Care healthcare team. We offer rewarding careers for qualified healthcare professionals with competitive salary, flexible schedules, and professional development."
+  title="Career Opportunities - Join Our Team | Viva Medical"
+  description="Join the Viva Medical healthcare team. We offer rewarding careers for qualified healthcare professionals with competitive salary, flexible schedules, and professional development."
 >
   <PageHero
     title="CAREER OPPORTUNITIES"
-    description="Viva Care is a dynamic and rapidly growing healthcare services agency looking to grow our family of qualified healthcare professionals across multiple regions. We offer rewarding career opportunities for dedicated individuals who are passionate about providing exceptional patient care."
+    description="Viva Medical is a dynamic and rapidly growing healthcare services agency looking to grow our family of qualified healthcare professionals across multiple regions. We offer rewarding career opportunities for dedicated individuals who are passionate about providing exceptional patient care."
     image={teamProfessionalsImage}
   />
 
@@ -46,7 +48,7 @@ import CheckListItem from "../components/CheckListItem.astro";
             All potential candidates for hire as healthcare professionals must
             meet standards established by the specific state licensing
             requirements and Department of Health (DOH) minimum requirements to
-            service any patient within the domain of Viva Care
+            service any patient within the domain of Viva Medical
             healthcare services licensure.
           </p>
           <p
@@ -66,9 +68,9 @@ import CheckListItem from "../components/CheckListItem.astro";
           <div
             class="relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300"
           >
-            <img
+            <Image
               alt="Healthcare team collaboration"
-              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"
+              src={professionalStaffImage}
               class="w-full h-full object-cover"
             />
           </div>
@@ -207,19 +209,19 @@ import CheckListItem from "../components/CheckListItem.astro";
             <p
               class="mb-5 text-base font-light leading-relaxed text-theme-text-secondary"
             >
-              Viva Care requires all healthcare professional applicants
+              Viva Medical requires all healthcare professional applicants
               to complete the Personal Experience Screening Questionnaires.
             </p>
             <!-- Application Links -->
             <div class="space-y-3">
               <a
-                href="#pesq"
+                href="/contact"
                 class="flex items-center justify-between p-3 bg-theme-surface-hover hover:bg-theme-primary-lighter/10 rounded-lg text-theme-primary hover:text-theme-primary-dark font-semibold transition-all duration-300 group border border-theme-border hover:border-theme-primary-lighter"
               >
                 <div class="flex items-center">
                   <Icon name="document" size="md" class="mr-3 flex-shrink-0" />
                   <span class="text-base lg:text-lg"
-                    >Personal Experience Screening Questionnaire</span
+                    >Request a Screening Questionnaire</span
                   >
                 </div>
                 <Icon
@@ -229,13 +231,13 @@ import CheckListItem from "../components/CheckListItem.astro";
                 />
               </a>
               <a
-                href="#employment-application"
+                href="/contact"
                 class="flex items-center justify-between p-3 bg-theme-surface-hover hover:bg-theme-primary-lighter/10 rounded-lg text-theme-primary hover:text-theme-primary-dark font-semibold transition-all duration-300 group border border-theme-border hover:border-theme-primary-lighter"
               >
                 <div class="flex items-center">
                   <Icon name="document" size="md" class="mr-3 flex-shrink-0" />
                   <span class="text-base lg:text-lg"
-                    >Employment Application</span
+                    >Request an Employment Application</span
                   >
                 </div>
                 <Icon
@@ -245,12 +247,12 @@ import CheckListItem from "../components/CheckListItem.astro";
                 />
               </a>
               <a
-                href="#reference-request"
+                href="/contact"
                 class="flex items-center justify-between p-3 bg-theme-surface-hover hover:bg-theme-primary-lighter/10 rounded-lg text-theme-primary hover:text-theme-primary-dark font-semibold transition-all duration-300 group border border-theme-border hover:border-theme-primary-lighter"
               >
                 <div class="flex items-center">
                   <Icon name="document" size="md" class="mr-3 flex-shrink-0" />
-                  <span class="text-base lg:text-lg">Reference Request</span>
+                <span class="text-base lg:text-lg">Request a Reference Form</span>
                 </div>
                 <Icon
                   name="chevron-right"
@@ -312,9 +314,9 @@ import CheckListItem from "../components/CheckListItem.astro";
               Specific equipment operation training and procedures may be viewed
               through our comprehensive training resources.
               <a
-                href="#"
+                href="/contact"
                 class="text-theme-primary hover:text-theme-primary-dark font-semibold transition-colors"
-                >Training Portal</a
+                >Request training access</a
               >
               Click on equipment training for detailed video resources.
             </p>
@@ -396,14 +398,14 @@ import CheckListItem from "../components/CheckListItem.astro";
             >
               The Sexual Harassment Training video was prepared by the Secretary
               of Labor for the State. Both the Governing Authority and all
-              employees of Viva Care are required to review the Sexual
+              employees of Viva Medical are required to review the Sexual
               Harassment Prevention Policy and Training. A copy of the agency
               policy and procedure document is available at your request. An
               acknowledgement form must be signed and returned to the agency.
             </p>
             <div class="space-y-3 mb-6">
               <a
-                href="#"
+                href="/contact"
                 class="flex items-center text-theme-primary hover:text-theme-primary-dark font-semibold text-base transition-colors group"
               >
                 <Icon
@@ -411,10 +413,10 @@ import CheckListItem from "../components/CheckListItem.astro";
                   size="md"
                   class="mr-2 group-hover:translate-x-1 transition-transform duration-300 flex-shrink-0"
                 />
-                <span>Sexual Harassment Prevention Training Part 1</span>
+                <span>Request Prevention Training Part 1</span>
               </a>
               <a
-                href="#"
+                href="/contact"
                 class="flex items-center text-theme-primary hover:text-theme-primary-dark font-semibold text-base transition-colors group"
               >
                 <Icon
@@ -423,28 +425,18 @@ import CheckListItem from "../components/CheckListItem.astro";
                   class="mr-2 group-hover:translate-x-1 transition-transform duration-300 flex-shrink-0"
                 />
                 <span
-                  >Sexual Harassment Prevention Training Part 2: Case Studies</span
+                  >Request Prevention Training Part 2: Case Studies</span
                 >
               </a>
             </div>
             <div class="bg-white rounded-xl p-6 border border-blue-200">
               <p class="text-gray-700 mb-2 text-sm">
-                <strong class="text-gray-900">Submit forms to:</strong>
-                <a
-                  href="mailto:hr@medcaresolutions.com"
-                  class="text-theme-primary hover:text-theme-primary-dark font-semibold transition-colors ml-2"
-                  >hr@medcaresolutions.com</a
-                >
+                <strong class="text-gray-900">Submit forms:</strong>
+                <a href="/contact" class="text-theme-primary hover:text-theme-primary-dark font-semibold transition-colors ml-2">Contact Human Resources</a>
               </p>
               <p class="text-gray-700 text-sm">
                 <strong class="text-gray-900">Questions?</strong>
-                <span class="ml-2"
-                  >Contact the administrator at <a
-                    href="tel:555-123-4567"
-                    class="text-theme-primary hover:text-theme-primary-dark font-semibold transition-colors"
-                    >555-123-4567</a
-                  ></span
-                >
+                <a href="/contact" class="ml-2 text-theme-primary hover:text-theme-primary-dark font-semibold transition-colors">Contact the administrator</a>
               </p>
             </div>
           </div>
